@@ -32,7 +32,8 @@ workflows that should run through Scenario.
    - For open-ended generation requests, use `recommend` for one-step
      generations, `plan_generation` for multi-step pipelines, or `search` when
      private/public model discovery by query is needed.
-   - Before calling a model, inspect its schema or required parameters.
+   - Before calling a model, call `get_model_schema` for the selected
+     `model_id`.
    - Match user-facing prompt details to the model schema instead of guessing
      unsupported fields.
 
@@ -41,14 +42,18 @@ workflows that should run through Scenario.
      when the user has not explicitly requested them.
    - Do not trigger training, workflow execution, or asset upload as a side
      effect of a planning or discovery request.
+   - When checking feasibility or cost before a real generation, prefer
+     `run_model` with `dry_run=true` if the live tool schema supports it.
+   - For OAuth callers, provide the confirmed `team_id` and `project_id` when
+     calling generation or job tools.
 
 4. Report useful results.
    - After generation, show or display generated assets when the MCP tool
      supports it.
    - If assets cannot be displayed directly, report stable asset IDs, job IDs,
      model names, and next steps.
-   - For long-running jobs, return the job identifier and explain how to check
-     status.
+   - For long-running jobs, return the job identifier and use `manage_jobs` to
+     check status when the user asks for progress.
 
 ## Uploads And Training
 

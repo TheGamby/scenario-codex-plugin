@@ -113,9 +113,13 @@ When working with Scenario through Codex:
 2. Use `list_teams` first, then `list_projects` when a team is known but the
    project is not.
 3. Search or request model recommendations for open-ended generation requests.
-4. Inspect the selected model schema before running generation.
-5. Run generation only when the requested action is clear.
-6. Display generated assets when possible, or report asset and job identifiers.
+4. Inspect the selected model schema with `get_model_schema` before running
+   generation.
+5. Use `run_model` with `dry_run=true` for cost/feasibility checks before a
+   real generation when supported by the live MCP schema.
+6. Run generation only when the requested action is clear.
+7. Display generated assets when possible, or report asset and job identifiers.
+8. Use `manage_jobs` for long-running job status checks.
 
 Uploads, training, and workflow execution should be treated as explicit user
 actions, not as side effects of discovery or planning.

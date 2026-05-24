@@ -19,7 +19,14 @@ Last updated: 2026-05-24
 - OAuth-authenticated read-only `list_teams` returned real account data.
 - Read-only model search returned public Scenario model data.
 - Read-only generation planning returned a pipeline without starting a job.
+- Live tool discovery confirmed:
+  - `get_model_schema` is read-only and requires `model_id`.
+  - `run_model` requires `model_id`, supports `dry_run`, and expects confirmed
+    `team_id` and `project_id` for OAuth callers.
+  - `display_asset` is read-only and requires `asset_id`.
+  - `manage_jobs` supports job checks after a generation starts.
 - Initial local commit exists on `main`.
+- Local release tag `v0.1.0` exists.
 
 ## Deliberately Not Done Automatically
 
