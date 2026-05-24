@@ -1,28 +1,64 @@
 # Scenario Codex Plugin - Follow-Up Issues
 
-These are GitHub-ready maintenance issues for V0.1.1. They are kept in the repo
-because the GitHub connector returned `403 Resource not accessible by
-integration` when issue creation was attempted.
+These are GitHub-ready maintenance issues for V0.2.0. They are kept in the repo
+because direct GitHub issue creation previously returned
+`403 Resource not accessible by integration`.
 
 ## Re-check Scenario MCP tool schemas after upstream changes
 
 Scenario MCP is beta and live tool names, schemas, minimum parameter
-constraints, and annotations can change.
+constraints, annotations, action enums, and billing behavior can change.
 
 Tasks:
 
 - Re-run plugin validation.
 - Re-run live `tools/list` discovery.
-- Compare key workflow tools: `list_teams`, `list_projects`, `search`,
-  `recommend`, `plan_generation`, `get_model_schema`, `run_model`,
-  `display_asset`, and `manage_jobs`.
-- Update `skills/scenario/SKILL.md` and `README.md` when tool contracts change.
+- Compare all tools in `planing/scenario-mcp-tool-inventory-v0.2.md`.
+- Re-check action enums for `train`, `manage_workflows`, `manage_jobs`,
+  `analyze`, `manage_assets`, `manage_models`, and `manage_collections`.
+- Update `skills/scenario/SKILL.md`, `README.md`, and the tool matrix when
+  tool contracts change.
 
 Acceptance:
 
 - Documentation and skill guidance match the current Scenario MCP contract.
 - The plugin still delegates to Scenario MCP and does not add a custom Scenario
   API client.
+
+## Add disposable upload smoke test
+
+V0.2 documents upload behavior but deliberately does not upload a real file as
+part of release validation.
+
+Tasks:
+
+- Prepare a small non-sensitive public-domain image fixture.
+- Use `upload_asset` with multipart upload and `complete_upload`.
+- Verify the returned asset with `display_asset` or `manage_assets get`.
+- Document the result without committing local paths, presigned URLs, team IDs,
+  or project IDs.
+
+Acceptance:
+
+- Upload flow is validated end to end with a disposable asset.
+- Public documentation contains only sanitized evidence.
+
+## Add training dry-run smoke test
+
+V0.2 validates `recommend_training` but does not configure or start training.
+
+Tasks:
+
+- Create or select a disposable model target suitable for dry-run validation.
+- Run `recommend_training` for the intended dataset shape.
+- Run `train` with `dry_run=true` for `configure` or `start` if the live MCP
+  accepts the test setup.
+- Do not start real training without explicit approval.
+
+Acceptance:
+
+- A training cost-preview path is validated without consuming training credits.
+- Any required disposable IDs are kept out of public docs.
 
 ## Evaluate API-key mode only if OAuth becomes impractical
 
