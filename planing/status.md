@@ -1,0 +1,46 @@
+# Scenario Codex Plugin - Implementation Status
+
+Last updated: 2026-05-24
+
+## Completed Locally
+
+- Plugin scaffold exists in this repository:
+  - `.codex-plugin/plugin.json`
+  - `.mcp.json`
+  - `.codex/config.toml`
+  - `skills/scenario/SKILL.md`
+  - `README.md`
+- JSON syntax checks passed for `.codex-plugin/plugin.json` and `.mcp.json`.
+- TOML syntax check passed for `.codex/config.toml`.
+- Plugin validator reported `Plugin validation passed`.
+- `node`, `npm`, and `npx` are available in the Codex desktop context.
+- `mcp-remote` connected to `https://mcp.scenario.com/mcp`.
+- Scenario MCP reported server name `scenario-mcp` and version `0.9.0`.
+- OAuth-authenticated read-only `list_teams` returned real account data.
+- Read-only model search returned public Scenario model data.
+- Read-only generation planning returned a pipeline without starting a job.
+- Initial local commit exists on `main`.
+
+## Deliberately Not Done Automatically
+
+- No personal Codex marketplace file was modified.
+- No Scenario upload, training, workflow execution, or generation job was
+  started.
+- No API-key wrapper was added; OAuth remains the V1 authentication mode.
+- No Scenario account-specific team/project names or IDs are documented in
+  public-facing files.
+
+## Requires Explicit User Action Or Approval
+
+- Push `main` to `origin` so GitHub contains the initial scaffold.
+- Push the release tag once the GitHub branch exists.
+- Run a paid or credit-consuming Scenario generation from a user-selected team,
+  project, and model.
+- Optionally create a personal marketplace entry if the user wants this plugin
+  to appear in the Codex plugin marketplace UI.
+
+## Current GitHub State
+
+- Remote: `https://github.com/TheGamby/scenario-codex-plugin.git`
+- `git ls-remote --heads origin` returned no branches.
+- Local `main` commit is ready to push after explicit approval.

@@ -63,13 +63,26 @@ The plugin manifest is at:
 .codex-plugin/plugin.json
 ```
 
+Validated local paths:
+
+1. Open this repository as the active Codex workspace.
+2. Keep the workspace trusted in Codex.
+3. Use the repo root as the local plugin root when adding a local plugin.
+4. Verify that Codex reads `.codex-plugin/plugin.json`, `.mcp.json`, and
+   `skills/` from this checkout.
+
 The plugin does not create a personal marketplace entry by default. If you want
 it to appear in a personal Codex marketplace, add that integration separately so
-the repo remains the source of truth for the plugin files.
+the repo remains the source of truth for the plugin files. Do not commit
+machine-local marketplace files unless you intentionally create a repo/team
+marketplace.
 
 For local MCP-only testing from this checkout, `.codex/config.toml` mirrors the
 same Scenario MCP server configuration. This is useful for validating the MCP
 connection without modifying personal marketplace files.
+
+Implementation progress and open approval-gated items are tracked in
+`planing/status.md`.
 
 ## Validated Setup
 
@@ -117,6 +130,8 @@ environment.
 ## Troubleshooting
 
 - `npx` not found: install Node.js/npm and reopen Codex.
+- npm cache `EPERM`: keep the `npm_config_cache` value from `.mcp.json`, or
+  repair ownership of your user-level npm cache outside this repository.
 - OAuth does not start: retry the Scenario MCP action and check that pop-up or
   browser handoff is allowed.
 - Authentication succeeds but writes fail: verify Scenario team/project
