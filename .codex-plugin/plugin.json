@@ -1,6 +1,6 @@
 {
   "name": "scenario-codex-plugin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Codex plugin for Scenario creative generation workflows through the official Scenario MCP server.",
   "author": {
     "name": "TheGamby",

@@ -10,7 +10,7 @@ This V1 plugin is intentionally small:
 - it adds a Codex skill that guides model discovery, generation planning, asset
   handling, uploads, and training workflows
 - it does not store Scenario API keys or add an API-key wrapper
-- it does not modify any personal Codex marketplace files
+- it keeps personal Codex marketplace entries outside the repository
 
 ## Requirements
 
@@ -71,11 +71,11 @@ Validated local paths:
 4. Verify that Codex reads `.codex-plugin/plugin.json`, `.mcp.json`, and
    `skills/` from this checkout.
 
-The plugin does not create a personal marketplace entry by default. If you want
-it to appear in a personal Codex marketplace, add that integration separately so
-the repo remains the source of truth for the plugin files. Do not commit
-machine-local marketplace files unless you intentionally create a repo/team
-marketplace.
+The repository does not contain personal marketplace files. If you want the
+plugin to appear in a personal Codex marketplace, add that integration
+separately so the repo remains the source of truth for the plugin files. Do not
+commit machine-local marketplace files unless you intentionally create a
+repo/team marketplace.
 
 For local MCP-only testing from this checkout, `.codex/config.toml` mirrors the
 same Scenario MCP server configuration. This is useful for validating the MCP
@@ -136,6 +136,14 @@ When working with Scenario through Codex:
 Uploads, training, and workflow execution should be treated as explicit user
 actions, not as side effects of discovery or planning.
 
+## Example Prompts
+
+- `List my Scenario projects.`
+- `Find a Scenario model for stylized fantasy game icons.`
+- `Plan a Scenario image generation for a blue crystal inventory icon.`
+- `Dry-run a small GPT Image 2 icon generation and report the estimated Creative Units.`
+- `Show the generated Scenario asset for this asset ID.`
+
 ## Minimal Dry-Run Workflow
 
 This workflow checks cost and parameter shape without starting a generation:
@@ -178,10 +186,12 @@ This keeps the repository as the source of truth.
 
 ## API-Key Auth
 
-API-key authentication is not part of V1. This avoids storing secrets in plugin
-configuration and keeps OAuth as the supported path. A future version may add a
-wrapper that reads `SCENARIO_API_KEY` and `SCENARIO_API_SECRET` from the
-environment.
+API-key authentication is intentionally not part of V1/V0.1.1. OAuth worked in
+Codex during validation, so the optional API-key phase is closed as
+"not implemented". This avoids storing secrets in plugin configuration and keeps
+OAuth as the supported path. A future version may add a wrapper that reads
+`SCENARIO_API_KEY` and `SCENARIO_API_SECRET` from the environment if OAuth
+becomes impractical for non-interactive workflows.
 
 ## Troubleshooting
 
@@ -192,8 +202,22 @@ environment.
   browser handoff is allowed.
 - Authentication succeeds but writes fail: verify Scenario team/project
   permissions and whether the account can perform generation actions.
+- Generation fails with a minimum-resolution error: inspect the model schema and
+  job metadata, then raise `width` and `height`. `GPT Image 2` required at
+  least 655,360 pixels during validation.
 - Tool names or schemas differ from examples: Scenario MCP is beta, so inspect
   the live MCP tool descriptions and follow the current server contract.
+
+## Release And Maintenance
+
+- Current release: `v0.1.1`
+- Keep OAuth as the default authentication mode.
+- Re-run plugin validation after any manifest, MCP, or skill change.
+- Re-check live Scenario MCP tool names and schemas before changing workflow
+  guidance.
+- Track future maintenance in GitHub issues, or in
+  `planing/follow-up-issues.md` when issue creation is unavailable, rather than
+  expanding this plugin into a custom Scenario API client.
 
 ## References
 

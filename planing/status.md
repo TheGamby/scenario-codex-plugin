@@ -1,6 +1,7 @@
 # Scenario Codex Plugin - Implementation Status
 
 Last updated: 2026-05-24
+Release status: V0.1.1 complete
 
 ## Completed Locally
 
@@ -45,8 +46,24 @@ Last updated: 2026-05-24
 - Personal marketplace entry created:
   - `~/.agents/plugins/marketplace.json`
   - `~/plugins/scenario-codex-plugin` symlinked to this repository.
+- Phase 5 usability improvements completed:
+  - README includes concrete local setup, Marketplace, dry-run, generation, and
+    troubleshooting notes.
+  - Skill guidance uses live tool names such as `list_teams`,
+    `get_model_schema`, `run_model`, `display_asset`, and `manage_jobs`.
+  - Example prompts for common game-art workflows are documented.
+- Phase 6 closed by decision:
+  - OAuth works in Codex and remains the default.
+  - API-key support was not implemented because no non-interactive requirement
+    exists yet.
+- Phase 7 release preparation completed:
+  - Version is `0.1.1`.
+  - Release tag `v0.1.1` is the intended stable V0.1.1 tag.
+  - Maintenance follow-ups are tracked in `planing/follow-up-issues.md`.
+  - Direct GitHub issue creation was attempted but the connector returned
+    `403 Resource not accessible by integration`.
 - Initial local commit exists on `main`.
-- Release tag `v0.1.0` exists locally and on `origin`.
+- Release tags exist locally and on `origin`.
 
 ## Deliberately Not Done Automatically
 
@@ -61,8 +78,15 @@ Last updated: 2026-05-24
 
 - None for V1 acceptance.
 
+## Follow-Up Tracking
+
+- GitHub issue creation should be retried manually or with a GitHub token that
+  can create issues in `TheGamby/scenario-codex-plugin`.
+- Until then, follow-up items are documented in
+  `planing/follow-up-issues.md`.
+
 ## Current GitHub State
 
 - Remote: `https://github.com/TheGamby/scenario-codex-plugin.git`
 - `origin/main` points at the final documented V1 state.
-- Tag `v0.1.0` points at the same final documented V1 state on `origin`.
+- Tag `v0.1.1` points at the final V0.1.1 state on `origin`.
