@@ -46,7 +46,7 @@ Last updated: 2026-05-24
   - `~/.agents/plugins/marketplace.json`
   - `~/plugins/scenario-codex-plugin` symlinked to this repository.
 - Initial local commit exists on `main`.
-- Local release tag `v0.1.0` exists.
+- Release tag `v0.1.0` exists locally and on `origin`.
 
 ## Deliberately Not Done Automatically
 
@@ -64,7 +64,5 @@ Last updated: 2026-05-24
 ## Current GitHub State
 
 - Remote: `https://github.com/TheGamby/scenario-codex-plugin.git`
-- `origin/main` exists.
-- Tag `v0.1.0` exists on `origin`.
-- Final generation and marketplace documentation is local until the next
-  `main` and `v0.1.0` push.
+- `origin/main` points at the final documented V1 state.
+- Tag `v0.1.0` points at the same final documented V1 state on `origin`.
