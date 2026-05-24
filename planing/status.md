@@ -1,7 +1,7 @@
 # Scenario Codex Plugin - Implementation Status
 
 Last updated: 2026-05-24
-Release status: V0.2.0 complete locally, pending final commit/tag/push
+Release status: V0.2.0 complete, committed, tagged, and pushed
 
 ## Completed Locally
 
@@ -108,7 +108,6 @@ Release status: V0.2.0 complete locally, pending final commit/tag/push
 ## Current GitHub State
 
 - Remote: `https://github.com/TheGamby/scenario-codex-plugin.git`
-- `origin/main` points at the final V0.1.1 state until the V0.2 commit is
-  pushed.
+- `origin/main` points at the final V0.2.0 state.
 - Tag `v0.1.1` points at the final V0.1.1 state on `origin`.
-- Planned V0.2 tag: `v0.2.0`.
+- Tag `v0.2.0` points at the final V0.2.0 state on `origin`.
