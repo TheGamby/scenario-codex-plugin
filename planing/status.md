@@ -25,6 +25,14 @@ Last updated: 2026-05-24
     `team_id` and `project_id` for OAuth callers.
   - `display_asset` is read-only and requires `asset_id`.
   - `manage_jobs` supports job checks after a generation starts.
+- Phase 4 dry-run completed for project `Tartaros`:
+  - Specialized public LoRA model `Stylized Game Icons & Props` was discovered
+    and its schema was read, but `run_model` dry-run returned a server-side
+    `400` saying custom models only are supported for that endpoint.
+  - `GPT Image 2` schema was read successfully.
+  - `run_model` with `dry_run=true` returned `creativeUnitsCost: 2`,
+    `creativeUnitsDiscount: 0`, and an empty job object.
+  - No generation job was created and no asset was produced.
 - Initial local commit exists on `main`.
 - Local release tag `v0.1.0` exists.
 
@@ -39,15 +47,15 @@ Last updated: 2026-05-24
 
 ## Requires Explicit User Action Or Approval
 
-- Push `main` to `origin` so GitHub contains the initial scaffold.
-- Push the release tag once the GitHub branch exists.
+- Push the dry-run documentation update to `origin/main` after review.
 - Run a paid or credit-consuming Scenario generation from a user-selected team,
-  project, and model.
+  project, and model if full Phase 4 generation validation is desired.
 - Optionally create a personal marketplace entry if the user wants this plugin
   to appear in the Codex plugin marketplace UI.
 
 ## Current GitHub State
 
 - Remote: `https://github.com/TheGamby/scenario-codex-plugin.git`
-- `git ls-remote --heads origin` returned no branches.
-- Local `main` commit is ready to push after explicit approval.
+- `origin/main` exists.
+- Tag `v0.1.0` exists on `origin`.
+- Phase 4 dry-run documentation is local until the next `main` push.

@@ -101,6 +101,10 @@ Validated on 2026-05-24 from this repository:
   v2`, `Game Backgrounds - III`, and `Environment Sprites 2.0`
 - Planning workflow check: `plan_generation` returned a text-to-image pipeline
   using `run_model` for a stylized fantasy game asset icon
+- Phase 4 dry-run check: for project `Tartaros`, `get_model_schema` was read
+  for `GPT Image 2`, then `run_model` was called with `dry_run=true` for a
+  512x512 low-quality single-output icon test. Scenario returned
+  `creativeUnitsCost: 2`, `creativeUnitsDiscount: 0`, and no job was created.
 
 The default user npm cache on the test machine was not writable, so validation
 used the same temporary npm cache configured in `.mcp.json`.
@@ -123,6 +127,21 @@ When working with Scenario through Codex:
 
 Uploads, training, and workflow execution should be treated as explicit user
 actions, not as side effects of discovery or planning.
+
+## Minimal Dry-Run Workflow
+
+This workflow checks cost and parameter shape without starting a generation:
+
+1. Use `list_teams` and `list_projects` to confirm the target project.
+2. Use `search`, `recommend`, or `plan_generation` to choose a model.
+3. Call `get_model_schema` for the selected `model_id`.
+4. Call `run_model` with `dry_run=true`, confirmed `team_id` and `project_id`,
+   and parameters that match the schema.
+5. Review the returned `creativeUnitsCost` before deciding whether to run the
+   same request without `dry_run`.
+
+The validated dry-run used `GPT Image 2` for a small stylized fantasy inventory
+icon and estimated 2 Creative Units. No asset or job was created.
 
 ## API-Key Auth
 
