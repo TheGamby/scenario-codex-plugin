@@ -26,7 +26,7 @@ Release status: V0.1.1 complete
     `team_id` and `project_id` for OAuth callers.
   - `display_asset` is read-only and requires `asset_id`.
   - `manage_jobs` supports job checks after a generation starts.
-- Phase 4 dry-run completed for project `Tartaros`:
+- Phase 4 dry-run completed for a user-selected Scenario project:
   - Specialized public LoRA model `Stylized Game Icons & Props` was discovered
     and its schema was read, but `run_model` dry-run returned a server-side
     `400` saying custom models only are supported for that endpoint.
@@ -34,7 +34,8 @@ Release status: V0.1.1 complete
   - `run_model` with `dry_run=true` returned `creativeUnitsCost: 2`,
     `creativeUnitsDiscount: 0`, and an empty job object.
   - No generation job was created and no asset was produced.
-- Phase 4 real generation completed for project `Tartaros`:
+- Phase 4 real generation completed for the same user-selected Scenario
+  project:
   - First 512x512 run failed with job `job_eYGMeNVmtZ6nw9BdVuED3Bdz`; job
     metadata reported the model requires `width * height` of at least 655,360
     pixels.

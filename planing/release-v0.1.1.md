@@ -36,7 +36,7 @@ plugin.
 - Personal marketplace entry:
   `~/.agents/plugins/marketplace.json`.
 - Plugin symlink:
-  `~/plugins/scenario-codex-plugin -> /Volumes/Development/source/gamby/scenario-codex-plugin`.
+  `~/plugins/scenario-codex-plugin -> /absolute/path/to/scenario-codex-plugin`.
 
 ## Follow-Up Planpoints
 

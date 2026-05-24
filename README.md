@@ -51,13 +51,8 @@ client.
 
 ## Using From This Repo
 
-Use this repository as the plugin root:
-
-```text
-/Volumes/Development/source/gamby/scenario-codex-plugin
-```
-
-The plugin manifest is at:
+Use the cloned repository directory as the plugin root. The plugin manifest is
+at:
 
 ```text
 .codex-plugin/plugin.json
@@ -155,9 +150,10 @@ Validated on 2026-05-24 from this repository:
   v2`, `Game Backgrounds - III`, and `Environment Sprites 2.0`
 - Planning workflow check: `plan_generation` returned a text-to-image pipeline
   using `run_model` for a stylized fantasy game asset icon
-- Phase 4 dry-run check: for project `Tartaros`, `get_model_schema` was read
-  for `GPT Image 2`, then `run_model` was called with `dry_run=true` for a
-  512x512 low-quality single-output icon test. Scenario returned
+- Phase 4 dry-run check: for a user-selected Scenario project,
+  `get_model_schema` was read for `GPT Image 2`, then `run_model` was called
+  with `dry_run=true` for a 512x512 low-quality single-output icon test.
+  Scenario returned
   `creativeUnitsCost: 2`, `creativeUnitsDiscount: 0`, and no job was created.
 - Phase 4 generation check: a first 512x512 real run failed because `GPT Image
   2` requires at least 655,360 pixels. A follow-up 1024x1024 low-quality
@@ -231,7 +227,7 @@ a personal marketplace entry and a symlink:
 
 ```text
 ~/.agents/plugins/marketplace.json
-~/plugins/scenario-codex-plugin -> /Volumes/Development/source/gamby/scenario-codex-plugin
+~/plugins/scenario-codex-plugin -> /absolute/path/to/scenario-codex-plugin
 ```
 
 The marketplace entry points to `./plugins/scenario-codex-plugin` with
