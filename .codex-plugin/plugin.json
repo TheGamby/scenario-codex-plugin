@@ -1,0 +1,39 @@
+{
+  "name": "scenario-codex-plugin",
+  "version": "0.1.0",
+  "description": "Codex plugin for Scenario creative generation workflows through the official Scenario MCP server.",
+  "author": {
+    "name": "TheGamby",
+    "url": "https://github.com/TheGamby"
+  },
+  "homepage": "https://github.com/TheGamby/scenario-codex-plugin",
+  "repository": "https://github.com/TheGamby/scenario-codex-plugin",
+  "keywords": [
+    "scenario",
+    "mcp",
+    "codex",
+    "game-art",
+    "asset-generation"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Scenario",
+    "shortDescription": "Use Scenario models and assets from Codex through MCP.",
+    "longDescription": "Connects Codex to the official Scenario MCP server for model discovery, asset workflows, and creative generation planning with OAuth authentication.",
+    "developerName": "TheGamby",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Generate",
+      "Read"
+    ],
+    "websiteURL": "https://github.com/TheGamby/scenario-codex-plugin",
+    "defaultPrompt": [
+      "List my Scenario projects.",
+      "Find a Scenario model for game assets.",
+      "Plan a Scenario image generation."
+    ],
+    "brandColor": "#2563EB"
+  }
+}

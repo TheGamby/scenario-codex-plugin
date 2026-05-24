@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "scenario": {
+      "command": "npx",
+      "env": {
+        "npm_config_cache": "/tmp/scenario-codex-plugin-npm-cache"
+      },
+      "args": [
+        "-y",
+        "mcp-remote@latest",
+        "https://mcp.scenario.com/mcp"
+      ]
+    }
+  }
+}

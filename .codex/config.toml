@@ -1,0 +1,8 @@
+[mcp_servers.scenario]
+args = [
+    "-y",
+    "mcp-remote@latest",
+    "https://mcp.scenario.com/mcp",
+]
+command = "npx"
+env = { npm_config_cache = "/tmp/scenario-codex-plugin-npm-cache" }
