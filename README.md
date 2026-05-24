@@ -84,6 +84,60 @@ connection without modifying personal marketplace files.
 Implementation progress and open approval-gated items are tracked in
 `planing/status.md`.
 
+## Install For Other Local Projects
+
+To use this plugin from other Codex chats or workspaces on the same machine,
+make it available through your personal Codex marketplace. Keep the marketplace
+file outside this repository; it is machine-local configuration.
+
+1. Clone this repository:
+
+```bash
+git clone https://github.com/TheGamby/scenario-codex-plugin.git
+```
+
+2. Link the clone into the personal plugin directory:
+
+```bash
+mkdir -p "$HOME/plugins"
+ln -s /absolute/path/to/scenario-codex-plugin "$HOME/plugins/scenario-codex-plugin"
+```
+
+If `~/plugins/scenario-codex-plugin` already exists, inspect it before replacing
+it.
+
+3. Create or update the personal marketplace file:
+
+```text
+~/.agents/plugins/marketplace.json
+```
+
+For a new personal marketplace, start from:
+
+```text
+examples/personal-marketplace.example.json
+```
+
+If you already have a marketplace file, merge only the
+`scenario-codex-plugin` entry from the example into your existing `plugins`
+array.
+
+4. Restart Codex or reload the plugin marketplace, then install or enable the
+Scenario plugin.
+
+5. Start a new Codex chat and test:
+
+```text
+List my Scenario projects.
+```
+
+The first Scenario action that needs account data should trigger Scenario
+OAuth. Complete that flow in the browser window opened by the MCP client.
+
+Do not commit `~/.agents/plugins/marketplace.json`, OAuth tokens, npm caches, or
+any Scenario API keys. This public repository intentionally contains no
+Scenario secrets.
+
 ## Validated Setup
 
 Validated on 2026-05-24 from this repository:
