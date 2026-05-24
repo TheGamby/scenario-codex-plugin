@@ -105,6 +105,14 @@ Validated on 2026-05-24 from this repository:
   for `GPT Image 2`, then `run_model` was called with `dry_run=true` for a
   512x512 low-quality single-output icon test. Scenario returned
   `creativeUnitsCost: 2`, `creativeUnitsDiscount: 0`, and no job was created.
+- Phase 4 generation check: a first 512x512 real run failed because `GPT Image
+  2` requires at least 655,360 pixels. A follow-up 1024x1024 low-quality
+  single-output run succeeded with job `job_shzQW61m5EoSkNZz6M8tdUmG` and asset
+  `asset_GQDDdE8VgMwqFfNQ7JVvATyk`. `display_asset` returned the generated
+  image.
+- Personal marketplace check: `~/.agents/plugins/marketplace.json` contains a
+  `scenario-codex-plugin` entry, and `~/plugins/scenario-codex-plugin` is a
+  symlink to this repository.
 
 The default user npm cache on the test machine was not writable, so validation
 used the same temporary npm cache configured in `.mcp.json`.
@@ -141,7 +149,32 @@ This workflow checks cost and parameter shape without starting a generation:
    same request without `dry_run`.
 
 The validated dry-run used `GPT Image 2` for a small stylized fantasy inventory
-icon and estimated 2 Creative Units. No asset or job was created.
+icon and estimated 2 Creative Units. A real 512x512 run failed because the live
+service requires at least 655,360 pixels for this model, so the successful
+minimal generation used 1024x1024.
+
+Successful generation:
+
+- Model: `GPT Image 2`
+- Parameters: `numOutputs=1`, `width=1024`, `height=1024`, `quality=low`,
+  `background=opaque`
+- Job: `job_shzQW61m5EoSkNZz6M8tdUmG`
+- Asset: `asset_GQDDdE8VgMwqFfNQ7JVvATyk`
+- Result display: `display_asset` returned the generated image
+
+## Personal Marketplace Entry
+
+This plugin can be loaded from the repository without copying its files by using
+a personal marketplace entry and a symlink:
+
+```text
+~/.agents/plugins/marketplace.json
+~/plugins/scenario-codex-plugin -> /Volumes/Development/source/gamby/scenario-codex-plugin
+```
+
+The marketplace entry points to `./plugins/scenario-codex-plugin` with
+`policy.installation: "AVAILABLE"` and `policy.authentication: "ON_INSTALL"`.
+This keeps the repository as the source of truth.
 
 ## API-Key Auth
 

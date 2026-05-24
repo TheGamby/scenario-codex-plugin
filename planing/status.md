@@ -33,29 +33,38 @@ Last updated: 2026-05-24
   - `run_model` with `dry_run=true` returned `creativeUnitsCost: 2`,
     `creativeUnitsDiscount: 0`, and an empty job object.
   - No generation job was created and no asset was produced.
+- Phase 4 real generation completed for project `Tartaros`:
+  - First 512x512 run failed with job `job_eYGMeNVmtZ6nw9BdVuED3Bdz`; job
+    metadata reported the model requires `width * height` of at least 655,360
+    pixels.
+  - A 1024x1024 dry-run still estimated `creativeUnitsCost: 2`.
+  - A 1024x1024 real run succeeded with job
+    `job_shzQW61m5EoSkNZz6M8tdUmG`.
+  - The generated asset is `asset_GQDDdE8VgMwqFfNQ7JVvATyk`.
+  - `display_asset` returned the generated image.
+- Personal marketplace entry created:
+  - `~/.agents/plugins/marketplace.json`
+  - `~/plugins/scenario-codex-plugin` symlinked to this repository.
 - Initial local commit exists on `main`.
 - Local release tag `v0.1.0` exists.
 
 ## Deliberately Not Done Automatically
 
-- No personal Codex marketplace file was modified.
-- No Scenario upload, training, workflow execution, or generation job was
-  started.
+- Personal Codex marketplace modification was made only after explicit user
+  approval.
+- No Scenario upload, training, or workflow execution was started.
 - No API-key wrapper was added; OAuth remains the V1 authentication mode.
-- No Scenario account-specific team/project names or IDs are documented in
-  public-facing files.
+- Scenario account-specific team/project IDs are not documented in public-facing
+  files.
 
 ## Requires Explicit User Action Or Approval
 
-- Push the dry-run documentation update to `origin/main` after review.
-- Run a paid or credit-consuming Scenario generation from a user-selected team,
-  project, and model if full Phase 4 generation validation is desired.
-- Optionally create a personal marketplace entry if the user wants this plugin
-  to appear in the Codex plugin marketplace UI.
+- None for V1 acceptance.
 
 ## Current GitHub State
 
 - Remote: `https://github.com/TheGamby/scenario-codex-plugin.git`
 - `origin/main` exists.
 - Tag `v0.1.0` exists on `origin`.
-- Phase 4 dry-run documentation is local until the next `main` push.
+- Final generation and marketplace documentation is local until the next
+  `main` and `v0.1.0` push.
